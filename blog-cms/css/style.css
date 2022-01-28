@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --header-size: 60px;
+    --body-color: #E5E5E5;
+    --btn-color: #4F4F4F;
+    --second-btn-color: #4ECE3D;
+    --login-btn-color: #2D9CDB;
+    --outline-color: #8DABC4;
+    --margin-top-bottom: 20px 0 20px 0;
+}
+
+body {
+    font-family: 'Heebo', sans-serif;
+    color: #fff;
+}
+
+nav {
+    height: var(--header-size);
+    background-color: #333333;
+}
+
+.container {
+    width: 54%;
+    text-align: center;
+    margin: auto;
+}
+
+ul {
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: 60% 25% 15%;
+    padding: 0;
+    list-style: none;
+    height: var(--header-size);
+    /* background-color: rgb(207, 207, 50); */
+}
+
+ul li {
+    margin: auto 0 auto 0;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+ul :nth-child(1) {
+    text-align: left;
+}
+
+
+/*------------Buttons-----------*/
+
+#btn {
+    height: 35px;
+    padding: 0px 20px 0px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--btn-color);
+    color: #fff;
+}
+
+#btn:hover {
+    cursor: pointer;
+}
+
+.button2 {
+    float: right;
+}
+
+.loginbtn {
+    background-color: red;
+}
+
+
+/*------------Buttons-----------*/
+
+#icon {
+    margin-left: -5px;
+    margin-right: 5px;
+}
+
+.wrapper {
+    margin-top: 12vh;
+    display: flex;
+    justify-content: center;
+    text-align: left;
+}
+
+label {
+    color: var(--outline-color);
+}
+
+input {
+    width: 30vh;
+    border-width: 1px;
+    border-color: var(--outline-color);
+    border-radius: 5px;
+    padding: 10px 18px 10px 18px;
+    outline-width: 0px;
+    margin-top: 10px;
+}
+
+#name {
+    margin-bottom: 10px;
+}
+
+#password {
+    margin-bottom: 20px;
+}
+
+input:focus {
+    outline-width: 5px;
+    outline-color: var(--outline-color);
+}
+
+input[type=submit] {
+    background-color: var(--login-btn-color);
+    color: #fff;
+    border: none;
+}
+
+.second {
+    color: #000;
+    text-align: left;
+}
+
+h1,
+p,
+.image,
+.content,
+.button3 {
+    margin: var(--margin-top-bottom);
+}
