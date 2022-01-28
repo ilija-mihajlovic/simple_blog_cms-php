@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php include("includes/header.php")?>
 
 <style>

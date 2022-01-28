@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php session_start()?>
 <?php include("db.php")?>
 <?php include("functions.php")?>
@@ -107,10 +108,9 @@ if(isset($_POST['logout'])){
                     $allowed_exs = array("jpg", "jpeg", "png"); 
         
                     if (in_array($img_ex_lc, $allowed_exs)) {
-                        $new_img_name = 'post'.$_SESSION['id'].'.'.$img_ex_lc;
+                        $new_img_name = 'post'.'uniqid()'.'.'.$img_ex_lc;
                         $img_upload_path = '../images/'.$new_img_name;
                         move_uploaded_file($tmp_name, $img_upload_path);
-                        $id = $_SESSION['id'];
                         
                     }else {
                         $em = "You can't upload files of this type";

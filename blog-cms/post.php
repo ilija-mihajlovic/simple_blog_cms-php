@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php include("includes/header.php")?>
 </head>
 <body>
@@ -16,8 +17,7 @@
                 }else{
                     echo "login.php";
                 }?>">Blog Managment</a></li>
-                <!-- <li><button id="btn" class="button2" style="background-color: #4ECE3D;"><img src="images/Icon.png"
-                            alt="" id="icon"> New Blog Post</button></li> -->
+             
                 <li>
                     <button id="btn" class="loginbtn" style="float: right;" onclick="backToBlog()">Return to blog</button>
                 </li>
@@ -73,7 +73,7 @@ if(isset($_GET["post_id"])){
         <h1><?php echo $post_title?></h1>
         <p><?php echo $post_date?></p>
         <hr>
-        <div class="image"><img style="max-height: 35vh; max-width:100%;" src="images/<?php echo $post_image?>" alt="Image"></div>
+        <div class="image"><img style="max-height: 38vh; width:100%;" src="images/<?php echo $post_image?>" alt="Image"></div>
         <hr>
         <div class="content"><?php echo $post_content?></div>
         <hr>
