@@ -1,11 +1,9 @@
-<?php include("includes/header.php")?>
+<?php ob_start(); ?>
+<?php include("header.php")?>
 </head>
 
 <body>
-    <?php
-
-   
-       ?>
+    
     <style>
     ul {
         grid-template-columns: 1fr 1fr;
@@ -20,24 +18,19 @@
         <div class="container">
             <div>
                 <ul>
-                    <li><a href="">Blog Managment</a></li>
-                    <li><button id="btn" onclick="backToBlog()">Return to blog</button></li>
+                    <li><a>Blog Managment</a></li>
+                    <li><button id="btn"><a href='../index.php'>Return to blog</a></button></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!---------User Input------------->
     <div class="container">
         <div class="wrapper">
-            <form action="login.php" method="post">
+            <form action="" method="post">
                 <span style="
-                color: red; 
-                display:inline-block;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                max-width: 26ch;"><?php
+                color: red; ">
+                <?php
                 if(isset($_POST["submit"])){
 
                     $username = $_POST['username'];
@@ -53,14 +46,15 @@
                     $db_username = $row['username'];
                     $db_password = $row['password'];
                     if($username == $db_username && $password == $db_password){
-                       redirect("admin.php");
+                       redirect("../admin.php");
                     }
-                    else{
+                        
+                    }
+                    if($username != $db_username && $password != $db_password){
                         echo "Wrong username or password";
                     }
-                }
-            }
                 
+            }
                 
                 ?></span><br>
                 <label for="">Username</label><br>
@@ -75,13 +69,5 @@
         </div>
     </div>
 </body>
-
-<script>
-function backToBlog() {
-    document.location.href = "index.php"
-}
-</script>
-
-
 
 </html>

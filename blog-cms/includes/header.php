@@ -8,6 +8,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/style.css">
+        <meta name="google-site-verification" content="2xPtt6XFnJ5bgJY3n3gzPHgMTsT8AlFlGBfHGox8Dk4" />
+        <link rel="stylesheet" href="../css/style.css">
         <title>Blog</title>
     

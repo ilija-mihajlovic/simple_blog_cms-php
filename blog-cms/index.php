@@ -12,7 +12,7 @@
             if(isset($_SESSION['username'])){
                 redirect("includes/add_post.php");
             }else{
-                redirect("login.php");
+                redirect("includes/login.php");
             }
         }
 
@@ -41,7 +41,7 @@
                 if(isset($_SESSION['username'])){
                     echo "admin.php";
                 }else{
-                    echo "login.php";
+                    echo "includes/login.php";
                 }?>">Blog Managment</a></li>
                     <li><form action="" method="POST"><button name="new_post" id="btn" class="button2" style="background-color: #4ECE3D;"><img src="images/Icon.png"
                                 alt="" id="icon"> New Blog Post</button></form></li>

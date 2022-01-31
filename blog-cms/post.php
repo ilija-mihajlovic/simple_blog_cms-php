@@ -15,7 +15,7 @@
                 if(isset($_SESSION['username'])){
                     echo "admin.php";
                 }else{
-                    echo "login.php";
+                    echo "includes/login.php";
                 }?>">Blog Managment</a></li>
              
                 <li>
@@ -84,7 +84,7 @@ if(isset($_GET["post_id"])){
 
 <script>
     function loginbtn(){
-        document.location.href= "login.php"
+        document.location.href= "includes/login.php"
     }
     function logoutbtn(){
         document.location.href= "includes/logout.php"

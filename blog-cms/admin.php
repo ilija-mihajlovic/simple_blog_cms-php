@@ -79,15 +79,11 @@ h2 {
 
 
     if(isset($_POST['logout'])){
-        redirect("./includes/logout.php");
+        redirect("includes/logout.php");
     }
-    if(isset($_POST['new_post'])){
-        if(isset($_SESSION['username'])){
-            redirect("admin.php");
-        }else{
-            redirect("login.php");
-        }
-    }
+   if(!isLoggedIn()){
+       redirect("includes/login.php");
+   }
 ?>
 
 
@@ -123,49 +119,6 @@ h2 {
         </div>
     </nav>
 
-    <?php
-
-// $per_page = 10;
-
-// if(isset($_GET['page'])) {
-
-// $page = $_GET['page'];
-
-// } else {
-//     $page = "";
-// }
-
-// if($page == "" || $page == 1) {
-//     $page_1 = 0;
-// } else {
-//     $page_1 = ($page * $per_page) - $per_page;
-// }
-
-// if(isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin' ) {
-
-//     $post_query_count = "SELECT * FROM posts";
-
-// } else {
-
-// $post_query_count = "SELECT * FROM posts WHERE post_status = 'published'";
-
-// }   
-
-// $find_count = mysqli_query($connection,$post_query_count);
-// $count = mysqli_num_rows($find_count);
-
-// if($count < 1) {
-
-// echo "<h1 class='text-center'>No posts available</h1>";
-
-// } else {
-
-//     $count  = ceil($count /$per_page);
-
-   ?>
-    <?php 
-
-?>
     <!---------User Input------------->
     <div class="container second">
         <div class="posts">
@@ -207,7 +160,7 @@ h2 {
                                     style="margin-right: 5px;"></a>
                         </td>
                     </tr>
-                    <?php }  //} ?>
+                    <?php }   ?>
                 </tbody>
             </table>
         </div>
