@@ -8,14 +8,33 @@
     }
 </style>
 <nav>
-    <div class="container">
+<div class="container">
+            <div class="header">
+                <a href="<?php
+                            if (isset($_SESSION['username'])) {
+                                echo "admin.php";
+                            } else {
+                                echo "login.php";
+                            } ?>" class="logo">Blog Management</a>
+                <div class="header-right">
+                    <a class="active" href="index.php">Return to blog</a>
+                    <?php if (isset($_SESSION['username'])) : ?>
+                        <a href="includes/logout.php" id="log">Logout</a>
+                    <?php else : ?>
+                        <a href="includes/login.php" id="log">Login</a>
+                    <?php endif; ?>
+
+                </div>
+            </div>
+        </div>
+    <!-- <div class="container">
         <div>
             <ul>
                 <li><a href="<?php
                 if(isset($_SESSION['username'])){
                     echo "admin.php";
                 }else{
-                    echo "includes/login.php";
+                    echo "login.php";
                 }?>">Blog Managment</a></li>
              
                 <li>
@@ -43,7 +62,7 @@
             </ul>
             
         </div>
-    </div>
+    </div> -->
 </nav>
 <?php
 
@@ -84,7 +103,7 @@ if(isset($_GET["post_id"])){
 
 <script>
     function loginbtn(){
-        document.location.href= "includes/login.php"
+        document.location.href= "login.php"
     }
     function logoutbtn(){
         document.location.href= "includes/logout.php"

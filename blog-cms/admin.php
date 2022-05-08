@@ -51,7 +51,7 @@ tbody tr :nth-child(3) {
 }
 
 .actions img {
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 tfoot tr {
@@ -69,6 +69,16 @@ ul {
 h2 {
     margin: 20px 0 20px 0;
 }
+@media only screen and (max-width: 1000px) {
+  .container{
+      width: 70%;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .container{
+      width: 80%;
+  }
+}
 </style>
 
 </head>
@@ -79,16 +89,45 @@ h2 {
 
 
     if(isset($_POST['logout'])){
-        redirect("includes/logout.php");
+        redirect("./includes/logout.php");
     }
-   if(!isLoggedIn()){
-       redirect("includes/login.php");
-   }
+    if(isset($_POST['new_post'])){
+        if(isset($_SESSION['username'])){
+            redirect("admin.php");
+        }else{
+            redirect("login.php");
+        }
+    }
 ?>
 
 
     <nav>
-        <div class="container">
+    <div class="container">
+            <div class="header">
+                <a href="<?php
+                            if (isset($_SESSION['username'])) {
+                                echo "admin.php";
+                            } else {
+                                echo "login.php";
+                            } ?>" class="logo">Blog Management</a>
+                <div class="header-right">
+                    <a class="active" href="
+                    <?php if (isset($_SESSION['username'])) : ?>
+                        includes/add_post.php
+                    <?php else: ?>
+                        includes/login.php
+                    <?php endif; ?>
+                    "><img src="images/Icon.png" alt="" id="icon"> New Blog Post</a>
+                    <?php if (isset($_SESSION['username'])) : ?>
+                        <a href="includes/logout.php" id="log">Logout</a>
+                    <?php else : ?>
+                        <a href="includes/login.php" id="log">Login</a>
+                    <?php endif; ?>
+
+                </div>
+            </div>
+        </div>
+        <!-- <div class="container">
             <div>
                 <ul style="
         <?php
@@ -116,7 +155,7 @@ h2 {
 
                 </ul>
             </div>
-        </div>
+        </div> -->
     </nav>
 
     <!---------User Input------------->
@@ -128,7 +167,7 @@ h2 {
                 <thead>
                     <tr>
                         <th>Title</th>
-                        <th>Date</th>
+                        <th style="padding: 0 0 0 5px;">Date</th>
                         <th style="text-align: right; ">Actions</th>
                     </tr>
                 </thead>
@@ -136,7 +175,7 @@ h2 {
 
 
                     <?php
-    $query = "SELECT * FROM posts";
+    $query = "SELECT * FROM posts ORDER BY ID DESC";
     $select_all_posts_query = mysqli_query($connection,$query);
 
     while($row = mysqli_fetch_assoc($select_all_posts_query)) {
@@ -150,17 +189,16 @@ h2 {
 ?>
                     <tr>
                         <td><?php echo $post_title;?></td>
-                        <td><?php echo $post_date;?></td>
-                        <td class="actions" style="text-align: right;">
+                        <td style="padding: 0 0 0 5px;"><?php echo $post_date;?></td>
+                        <td class="actions" style="text-align: right; padding:0 5px 0 5px;">
                             <a href="post.php?post_id=<?php echo $post_id;?>"><img src="images/Globe.png" alt=""></a>
                             <a href="includes/edit_post.php?post_id=<?php echo $post_id;?>"><img
                                     src="images/edit_blue.png" alt=""></a>
                             <!-- <a href="includes/delete.php?delete=<?php echo $post_id;?>"><img src="images/Delete.png" alt="" style="margin-right: 5px;"></a> -->
-                            <a onclick="delete_post(<?php echo $post_id;?>)"><img src="images/Delete.png" alt=""
-                                    style="margin-right: 5px;"></a>
+                            <a onclick="delete_post(<?php echo $post_id;?>)"><img style="cursor:pointer;" src="images/Delete.png" alt=""></a>
                         </td>
                     </tr>
-                    <?php }   ?>
+                    <?php }  //} ?>
                 </tbody>
             </table>
         </div>
@@ -177,9 +215,6 @@ function delete_post(post_id) {
     }
 }
 
-function logoutbtn() {
-    document.location.href = "includes/logout.php"
-}
 </script>
 
 </html>
